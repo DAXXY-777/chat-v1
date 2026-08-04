@@ -1,0 +1,13 @@
+[project]
+name = "chat-v1"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "fastapi>=0.140.2",
+    "ollama>=0.6.2",
+    "requests>=2.34.2",
+    "streamlit>=1.60.0",
+    "uvicorn>=0.51.0",
+]
