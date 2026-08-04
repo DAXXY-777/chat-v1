@@ -1,4 +1,4 @@
-# Foundation AI
+# Chat/Rag foundation
 
 A learning-focused project for understanding how modern AI applications are built.
 
