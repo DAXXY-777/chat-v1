@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 import ollama
-from snippets import posts
-from base import ChatRequest as chatrequest
+from app.snippets import posts
+from app.base import ChatRequest as chatrequest
 from fastapi.responses import StreamingResponse
 
 system_prompt = """
