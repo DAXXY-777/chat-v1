@@ -1,0 +1,546 @@
+/* ============================================================
+   GLOBAL
+   ============================================================ */
+
+:root {
+    --app-bg: #0b0d10;
+    --sidebar-bg: #0f1115;
+    --panel-bg: #12151a;
+
+    --border: rgba(255, 255, 255, 0.07);
+    --border-strong: rgba(255, 255, 255, 0.11);
+
+    --text: #f5f7fa;
+    --text-secondary: #a7adb7;
+    --text-muted: #707782;
+
+    --accent: #0db2e4;
+    --accent-soft: rgba(108, 221, 255, 0.12);
+
+    --radius-sm: 10px;
+    --radius-md: 14px;
+    --radius-lg: 18px;
+}
+
+
+/* ============================================================
+   APP
+   ============================================================ */
+
+.gradio-container {
+    max-width: none !important;
+    padding: 0 !important;
+    background: var(--app-bg) !important;
+}
+
+#app-shell {
+    min-height: 100vh;
+    gap: 0 !important;
+}
+
+
+/* ============================================================
+   SIDEBAR
+   ============================================================ */
+
+#sidebar {
+    min-height: 100vh;
+    padding: 24px 16px 14px 16px !important;
+
+    background: var(--sidebar-bg) !important;
+
+    border-right: 1px solid var(--border);
+
+    box-sizing: border-box;
+}
+
+
+/* ============================================================
+   BRAND
+   ============================================================ */
+
+#brand {
+    margin-bottom: 28px;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+}
+
+.brand-mark {
+    width: 34px;
+    height: 34px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 10px;
+
+    background: var(--accent-soft);
+    color: #0db2e4;
+
+    font-size: 18px;
+}
+
+.brand-name {
+    color: var(--text);
+
+    font-size: 15px;
+    font-weight: 650;
+    line-height: 1.2;
+}
+
+.brand-caption {
+    margin-top: 3px;
+
+    color: var(--text-muted);
+
+    font-size: 10px;
+}
+
+
+/* ============================================================
+   NEW CHAT
+   ============================================================ */
+
+#new-chat-button {
+    height: 44px;
+
+    margin-bottom: 22px;
+
+    border: 0 !important;
+    border-radius: var(--radius-md) !important;
+
+    font-weight: 600 !important;
+}
+
+
+/* ============================================================
+   SECTION LABEL
+   ============================================================ */
+
+.section-label {
+    margin: 0 0 8px 4px !important;
+
+    color: var(--text-muted) !important;
+
+    font-size: 10px !important;
+    font-weight: 700 !important;
+
+    letter-spacing: 0.09em;
+}
+
+
+/* ============================================================
+   CHAT SEARCH
+   ============================================================ */
+
+#chat-search {
+    min-height: 40px !important;
+
+    border: 1px solid var(--border) !important;
+    border-radius: var(--radius-sm) !important;
+
+    background: var(--panel-bg) !important;
+}
+
+#chat-search input {
+    font-size: 12px !important;
+}
+
+
+/* ============================================================
+   CHAT LIST
+   ============================================================ */
+
+#chat-list {
+    margin-top: 7px !important;
+}
+
+#chat-list > div {
+    border: 0 !important;
+    background: transparent !important;
+}
+
+#chat-list input {
+    font-size: 12px !important;
+}
+
+
+/* ============================================================
+   SIDEBAR SPACER
+   ============================================================ */
+
+.sidebar-spacer {
+    flex: 1;
+    min-height: 24px;
+}
+
+
+/* ============================================================
+   MODEL LIBRARY
+   ============================================================ */
+
+#model-library {
+    margin-top: 12px;
+
+    border: 1px solid var(--border) !important;
+    border-radius: var(--radius-md) !important;
+
+    background: rgba(255, 255, 255, 0.015) !important;
+}
+
+.library-header {
+    padding-bottom: 10px;
+}
+
+.library-title {
+    color: var(--text);
+
+    font-size: 13px;
+    font-weight: 650;
+}
+
+.library-subtitle {
+    margin-top: 4px;
+
+    color: var(--text-muted);
+
+    font-size: 10px;
+    line-height: 1.4;
+}
+
+
+#model-search {
+    min-height: 38px !important;
+
+    border: 1px solid var(--border) !important;
+    border-radius: var(--radius-sm) !important;
+
+    background: var(--panel-bg) !important;
+}
+
+#model-search-button {
+    margin-top: 8px;
+
+    border-radius: var(--radius-sm) !important;
+
+    font-size: 12px !important;
+}
+
+#model-results {
+    margin-top: 8px;
+}
+
+#model-info {
+    margin-top: 10px;
+
+    padding: 11px;
+
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+
+    background: var(--panel-bg);
+
+    color: var(--text-secondary);
+
+    font-size: 11px;
+}
+
+#download-button {
+    width: 100%;
+
+    margin-top: 8px;
+
+    border-radius: var(--radius-sm) !important;
+
+    font-size: 12px !important;
+}
+
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+
+#sidebar-footer {
+    margin-top: 18px;
+}
+
+.footer-status {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+
+    color: var(--text-muted);
+
+    font-size: 10px;
+}
+
+.status-dot {
+    width: 6px;
+    height: 6px;
+
+    border-radius: 50%;
+
+    background: #54d68b;
+
+    box-shadow: 0 0 8px rgba(84, 214, 139, 0.5);
+}
+
+
+/* ============================================================
+   MAIN AREA
+   ============================================================ */
+
+#main-area {
+    min-height: 100vh;
+
+    padding: 22px 28px 20px 28px !important;
+
+    background: var(--app-bg) !important;
+}
+
+
+/* ============================================================
+   TOPBAR
+   ============================================================ */
+
+#topbar {
+    padding: 2px 0 17px 0;
+}
+
+.page-heading {
+    padding-top: 3px;
+}
+
+.page-title {
+    color: var(--text);
+
+    font-size: 18px;
+    font-weight: 650;
+}
+
+.page-subtitle {
+    margin-top: 3px;
+
+    color: var(--text-muted);
+
+    font-size: 11px;
+}
+
+#model-selector {
+    min-width: 220px;
+}
+
+#model-selector > div {
+    border: 1px solid var(--border-strong) !important;
+    border-radius: 12px !important;
+
+    background: var(--panel-bg) !important;
+}
+
+
+/* ============================================================
+   CHATBOT
+   ============================================================ */
+
+#chatbot {
+    min-height: 500px;
+
+    border: 1px solid var(--border) !important;
+    border-radius: var(--radius-lg) !important;
+
+    background: rgba(255, 255, 255, 0.012) !important;
+
+    overflow: hidden;
+}
+
+#chatbot .message {
+    font-size: 13px !important;
+    line-height: 1.65 !important;
+}
+
+#chatbot .avatar-container {
+    border-radius: 10px !important;
+}
+
+
+/* ============================================================
+   COMPOSER
+   ============================================================ */
+
+#composer {
+    margin-top: 13px !important;
+    padding: 0 !important;
+
+    gap: 10px !important;
+
+    border: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+
+    align-items: flex-end !important;
+}
+
+
+/* Textbox */
+
+#message-input {
+    min-height: 48px !important;
+
+    border: 1px solid var(--border-strong) !important;
+    border-radius: 14px !important;
+
+    background: var(--panel-bg) !important;
+
+    box-shadow: none !important;
+    overflow: hidden !important;
+}
+
+#message-input:focus-within {
+    border-color: rgba(13, 178, 228, 0.45) !important;
+    box-shadow: 0 0 0 3px rgba(13, 178, 228, 0.08) !important;
+}
+
+#message-input textarea {
+    min-height: 46px !important;
+
+    padding: 12px 14px !important;
+
+    border: 0 !important;
+    outline: 0 !important;
+
+    background: transparent !important;
+
+    color: var(--text) !important;
+    font-size: 13px !important;
+    line-height: 1.5 !important;
+
+    resize: none !important;
+}
+
+#message-input textarea::placeholder {
+    color: var(--text-muted) !important;
+}
+
+
+/* Send button */
+
+#send-button {
+    width: 48px !important;
+    height: 48px !important;
+
+    min-width: 48px !important;
+    max-width: 48px !important;
+
+    padding: 0 !important;
+    margin: 0 !important;
+
+    border: 0 !important;
+    border-radius: 14px !important;
+
+    font-size: 19px !important;
+    font-weight: 600 !important;
+
+    box-shadow: none !important;
+
+    flex: 0 0 48px !important;
+}
+
+#send-button:hover {
+    transform: none !important;
+    filter: brightness(1.08);
+}
+
+/* ============================================================
+   COMPOSER HINT
+   ============================================================ */
+
+#composer-hint {
+    margin-top: 7px;
+}
+
+.composer-hint {
+    padding-left: 4px;
+
+    color: var(--text-muted);
+
+    font-size: 10px;
+}
+
+
+/* ============================================================
+   FORM CONTROLS
+   ============================================================ */
+
+input,
+textarea,
+button {
+    font-family: inherit !important;
+}
+
+
+/* ============================================================
+   MOBILE
+   ============================================================ */
+
+@media (max-width: 900px) {
+
+    #sidebar {
+        min-width: 230px !important;
+    }
+
+    #main-area {
+        padding: 16px !important;
+    }
+
+    #model-selector {
+        min-width: 170px;
+    }
+}
+
+
+@media (max-width: 700px) {
+
+    #sidebar {
+        display: none !important;
+    }
+
+    #main-area {
+        padding: 12px !important;
+    }
+
+    #chatbot {
+        min-height: 65vh;
+    }
+
+    #topbar {
+        gap: 8px;
+    }
+
+    .page-subtitle {
+        display: none;
+    }
+}
+#model-selector-sidebar {
+    margin-top: 8px;
+}
+
+#model-selector-sidebar > div {
+    border: 1px solid var(--border) !important;
+    border-radius: var(--radius-sm) !important;
+    background: var(--panel-bg) !important;
+}
+
+#model-display {
+    min-width: 220px;
+}
+
+#model-display > div {
+    border: 1px solid var(--border-strong) !important;
+    border-radius: 12px !important;
+    background: var(--panel-bg) !important;
+}
