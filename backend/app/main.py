@@ -1,9 +1,13 @@
-from fastapi import FastAPI
+from fastapi import FastAPI,File,HTTPException,UploadFile
 from pathlib import Path
 from app.snippets import posts
 from app.base import ChatRequest as chatrequest
 from fastapi.responses import StreamingResponse
 from openai import AsyncOpenAI
+
+import shutil
+import tempfile
+from app.rag import get_rag_service
 
 from llama_cpp import Llama
 
@@ -29,12 +33,13 @@ Your goals are:
 
 app = FastAPI()
 
+rag = get_rag_service()
+
 # Directory containing this Python file
 BASE_DIR = Path(__file__).resolve().parent
 
 # Your existing local model
 MODEL_PATH = BASE_DIR / "gguf-models" / "Qwen3.5-9B-Q4_K_M.gguf"
-
 
 llm = Llama(
     model_path=str(MODEL_PATH),
@@ -54,6 +59,52 @@ def get_posts():
     return posts
 
 
+
+@app.post("/ingest")
+def ingest_pdf(
+    file: UploadFile = File(...),
+):
+
+    if not file.filename:
+        raise HTTPException(
+            status_code=400,
+            detail="Filename is required",
+        )
+
+    if not file.filename.lower().endswith(".pdf"):
+        raise HTTPException(
+            status_code=400,
+            detail="Only PDF files are supported",
+        )
+
+    # Prevent strange filenames/path traversal
+    filename = Path(file.filename).name
+
+    with tempfile.TemporaryDirectory() as temp_dir:
+
+        pdf_path = (
+            Path(temp_dir)
+            / filename
+        )
+
+        with pdf_path.open("wb") as output:
+
+            shutil.copyfileobj(
+                file.file,
+                output,
+            )
+
+        result = rag.ingest_pdf(
+            pdf_path=pdf_path,
+            filename=filename,
+        )
+
+    return {
+        "status": "ok",
+        **result,
+    }
+
+
 @app.post("/llama")
 def chat(request: chatrequest):
 
@@ -67,7 +118,7 @@ def chat(request: chatrequest):
                 },
                 {
                     "role": "user",
-                    "content": f"Question: {request.prompt}",
+                    "content": rag.build_prompt(request.prompt)
                 },
             ],
 

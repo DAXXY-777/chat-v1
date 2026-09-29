@@ -1,6 +1,6 @@
 import gradio as gr
 
-from api_client import stream_llama
+from api_client import stream_llama,ingest_pdf
 
 #fixed set of models
 MODELS = [
@@ -113,6 +113,28 @@ def send_message(message, history):
         )
 
         yield history, ""
+
+def handle_pdf_upload(file_path):
+
+    if not file_path:
+        return
+
+    try:
+
+        result = ingest_pdf(
+            file_path
+        )
+
+        gr.Info(
+            f"Indexed {result['filename']} "
+            f"({result['chunks']} chunks)"
+        )
+
+    except Exception as exc:
+
+        raise gr.Error(
+            f"PDF ingestion failed: {exc}"
+        )
 
 def new_chat():
     """
@@ -372,6 +394,12 @@ with gr.Blocks(
         fn=select_chat,
         inputs=chat_list,
         outputs=chatbot,
+    )
+
+    pdf_upload.upload(
+    fn=handle_pdf_upload,
+    inputs=pdf_upload,
+    outputs=None,
     )
 
    
