@@ -7,9 +7,11 @@ from openai import AsyncOpenAI
 
 import shutil
 import tempfile
+
 from app.rag import get_rag_service
 
-from llama_cpp import Llama
+from app.llm_runtime import get_llm
+# from llama_cpp import Llama
 
 
 
@@ -35,19 +37,20 @@ app = FastAPI()
 
 rag = get_rag_service()
 
-# Directory containing this Python file
-BASE_DIR = Path(__file__).resolve().parent
+# # Directory containing this Python file
+# BASE_DIR = Path(__file__).resolve().parent
 
-# Your existing local model
-MODEL_PATH = BASE_DIR / "gguf-models" / "Qwen3.5-9B-Q4_K_M.gguf"
+# # Your existing local model
+# MODEL_PATH = BASE_DIR / "gguf-models" / "Qwen3.5-9B-Q4_K_M.gguf"
 
-llm = Llama(
-    model_path=str(MODEL_PATH),
-    n_gpu_layers=-1,   # offloaded model layers to gpu
-    n_ctx=8192,         #total context length
-    verbose=False,
-)
+# llm = Llama(
+#     model_path=str(MODEL_PATH),
+#     n_gpu_layers=-1,   # offloaded model layers to gpu
+#     n_ctx=8192,         #total context length
+#     verbose=False,
+# )
 
+llm = get_llm()
 
 @app.get("/")
 def home():

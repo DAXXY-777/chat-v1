@@ -263,6 +263,15 @@ Passage:
                 f"{chunk_number}/{len(canonical_chunks)}..."
             )
             questions, usage = self._generate_questions(chunk["text"])
+
+            if len(questions) != HYPE_QUESTIONS_PER_CHUNK:
+                raise RuntimeError(
+                    f"HyPE expected "
+                    f"{HYPE_QUESTIONS_PER_CHUNK} questions "
+                    f"for chunk {chunk['chunk_id']}, "
+                    f"but generated {len(questions)}."
+                )
+            
             prompt_tokens += usage["prompt_tokens"]
             completion_tokens += usage["completion_tokens"]
 
