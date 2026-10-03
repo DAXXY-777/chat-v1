@@ -151,7 +151,7 @@ class LocalReranker:
             print(f"[RERANK] Loading {self.model_name}...")
             self._model = CrossEncoder(
                 self.model_name,
-                device=os.getenv("RERANK_DEVICE", "cpu"),
+                device="cuda",
             )
             print("[RERANK] Ready")
         return self._model

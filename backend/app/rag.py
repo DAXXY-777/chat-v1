@@ -65,10 +65,7 @@ class RAGService:
 
                 # Your llama.cpp model already uses the GPU.
                 # Start embeddings on CPU so they don't fight for VRAM.
-                device=os.getenv(
-                    "EMBED_DEVICE",
-                    "cpu",
-                ),
+                device="cuda",
             )
 
         return self._embedder

@@ -68,7 +68,7 @@ class RAGService:
             print("[HYDE] Loading embedding model...")
             self._embedder = SentenceTransformer(
                 EMBED_MODEL,
-                device=os.getenv("EMBED_DEVICE", "cpu"),
+                device="cuda",
             )
             print("[HYDE] Embedding model ready")
         return self._embedder
