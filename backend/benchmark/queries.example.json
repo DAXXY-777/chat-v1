@@ -1,0 +1,13 @@
+[
+  {
+    "query_id": "q001",
+    "question": "Write a natural question here.",
+    "category": "paraphrase",
+    "relevant_chunks": [
+      {
+        "filename": "your_document.pdf",
+        "chunk_index": 0
+      }
+    ]
+  }
+]
